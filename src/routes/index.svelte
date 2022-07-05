@@ -1,30 +1,11 @@
 <script>
-	let items = [
-		{
-			id: 1,
-			suggestedBy: 'Max',
-			title: 'Badminton Set',
-			claimed: false,
-			claimedBy: []
-		},
-		{
-			id: 2,
-			suggestedBy: 'Nadia',
-			title: 'Bite Away',
-			claimed: true,
-			claimedBy: ['Max']
-		},
-		{
-			id: 3,
-			suggestedBy: 'Max',
-			title: 'Karten',
-			claimed: false,
-			claimedBy: []
-		}
-	];
 
 	import List from '../lib/list.svelte';
 	import AddItemForm from '../lib/AddItemForm.svelte';
+	import users from '$lib/data/users.js'
+	import tempItems from '$lib/data/items.js'
+
+	let items = tempItems
 
 	const addItem = (event) => {
 		console.log('Received event');
@@ -33,10 +14,12 @@
 		items = [...items];
 	};
 	const claimItem = (event) => {
-		console.log('Received claim event');
+		console.log(`Received claim event ${event.detail}`);
 		items = items.map((item) => {
 			if (item.id === event.detail) {
 				item.claimed = !item.claimed;
+				item.claimedBy.push(1)
+				console.log(item)
 			}
 			return item;
 		});
@@ -48,9 +31,14 @@
 </script>
 
 <main class="bg-base-100 py-4 px-2 md:px-6 min-h-screen">
-	<h1 class="text-blue-600 font-extralight text-3xl my-4 text-center">Urlaubs Bringliste</h1>
-	<div class="divider font-extralight text-3xl text-neutral-content">~</div>
-	<List {items} on:claim={claimItem} on:delete={deleteItem} />
-	<div class="divider font-extralight text-3xl text-neutral-content">~</div>
-	<AddItemForm on:addItem={addItem} />
+			<h1 class="text-blue-600 font-thin text-3xl my-4 text-center">Ich packe meinen Koffer...</h1>
+		<div class="divider font-extralight text-3xl text-neutral-content">~</div>
+		<List {items} on:claim={claimItem} on:delete={deleteItem} />
+
+		<div class="divider font-extralight text-3xl text-neutral-content">~</div>
+		<AddItemForm on:addItem={addItem} />
 </main>
+
+{#each users as user }
+		<h3>{user.id} - {user.name}</h3>
+	{/each}
