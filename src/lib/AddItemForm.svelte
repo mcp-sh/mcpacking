@@ -3,7 +3,7 @@
 	const dispatch = createEventDispatcher();
 	let newItemTitle = '';
 	const addItem = () => {
-		const id = Math.floor(Math.random() * 1000);
+		const id = Math.floor(Math.random() * 10000);
 		console.log(`ich packe meinen Koffer...${id}`);
 		console.log(`und bringe ${newItemTitle}`);
 		const newItem = {
