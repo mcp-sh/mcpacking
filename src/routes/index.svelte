@@ -8,13 +8,11 @@
 	let items = tempItems;
 
 	const addItem = (event) => {
-		console.log('Received event');
 		console.log(event.detail);
 		items.push(event.detail);
 		items = [...items];
 	};
 	const claimItem = (event) => {
-		console.log(`Received claim event for item ${event.detail}`);
 		items = items.map((item) => {
 			if (item.id === event.detail) {
 				const claims = [...item.claimedBy]
@@ -29,7 +27,6 @@
 		});
 	};
 	const deleteItem = (event) => {
-		console.log('Received delete event');
 		items = items.filter((item) => item.id !== event.detail);
 	};
 
