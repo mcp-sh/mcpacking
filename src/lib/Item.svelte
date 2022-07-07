@@ -1,6 +1,11 @@
 <script>
   export let item
-
+	export let userId
+ 
+	import DeleteButton from './components/DeleteButton.svelte';
+	import ClaimButton from './components/ClaimButton.svelte';
+	import users from '$lib/data/users.js'
+	
   import { createEventDispatcher } from 'svelte'
   const dispatch = createEventDispatcher()
   const deleteItem = (id) => {
@@ -8,18 +13,24 @@
 		dispatch('delete', id);
 	};
 	const claimItem = (id) => {
-		console.log(`Claiming item with id ${id}`);
+		console.log(`Claiming item with id ${id} for user ${userId}`);
 		dispatch('claim', id);
 	};
 
-  import DeleteButton from './components/DeleteButton.svelte';
-  import ClaimButton from './components/ClaimButton.svelte';
+	const getPerson = (id) => {
+		const person = users.filter((user) => user.id === id)
+		return person[0].name
+	}
+
+
+	$: claimees = [...item.claimedBy]
+	$: claimed = claimees.length > 0
 
 </script>
 
 <div
 			class="card card-compact bg-base-200 text-base-content shadow-md mb-3 border-r-green-500 rounded-lg rounded-r-none"
-			class:border-r-4={item.claimed}
+			class:border-r-4={claimed}
 		>
 			<div class="card-body">
 				<h2 class="card-title">{item.title}</h2>
@@ -37,9 +48,12 @@
 						</button>
 					</div>
 					<div class="people">
-						{#if item.claimedBy.length > 0}
-							<button class="btn btn-info btn-sm text-info-content text-xs">{item.claimedBy}</button
-							>
+						{#if claimed}
+							{#each claimees as i }
+								<button class="btn btn-info btn-sm ml-2 text-info-content text-xs">
+									{getPerson(i)}
+								</button>
+							{/each}
 						{/if}
 					</div>
 				</div>
