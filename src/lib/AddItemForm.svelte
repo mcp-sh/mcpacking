@@ -1,37 +1,32 @@
 <script>
+	import { userId } from '$lib/stores/userStore.js';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 	let newItemTitle = '';
 	const addItem = () => {
 		const id = Math.floor(Math.random() * 10000);
-		console.log(`ich packe meinen Koffer...${id}`);
-		console.log(`und bringe ${newItemTitle}`);
 		const newItem = {
 			id,
 			title: newItemTitle,
-			suggestedBy: '',
-			claimedBy: '',
-			claimed: false
+			suggestedBy: $userId,
+			claimedBy: []
 		};
 		dispatch('addItem', newItem);
 		newItemTitle = '';
 	};
 </script>
 
-<h1 class="text-center font-extralight text-2xl text-blue-600 mb-4">Mehr Zeug</h1>
-<div class="add-item-form mb-4">
-	<div class="form-control ">
-		<form on:submit|preventDefault="{addItem}">
-			<label class="input-group">
-				<span>Title</span>
-				<input
-					bind:value={newItemTitle}
-					type="text"
-					placeholder="Zeug"
-					class="input input-bordered w-full"
-				/>
-			</label>
-			<button class="btn btn-primary text-primary-content mt-2">Hinzufügen</button>
+<h1 class="font-extralight text-3xl text-primary text-center">~</h1>
+<div class="add-item-form my-4">
+	<div class="w-full mt-4">
+		<form on:submit|preventDefault={addItem}>
+			<input
+				bind:value={newItemTitle}
+				type="text"
+				placeholder="Wir brauchen..."
+				class="input input-bordered w-full text-center text-xl"
+			/>
+			<button class="btn btn-primary text-primary-content mt-2 w-full">Hinzufügen</button>
 		</form>
 	</div>
 </div>
