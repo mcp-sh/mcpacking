@@ -1,23 +1,20 @@
 let tempItems = [
 	{
 		id: 1,
-		suggestedBy: 'Max',
+		suggestedBy: 1,
 		title: 'Badminton Set',
-		// claimed: false,
 		claimedBy: [1]
 	},
 	{
 		id: 2,
-		suggestedBy: 'Nadia',
+		suggestedBy: 5,
 		title: 'Bite Away',
-		// claimed: true,
 		claimedBy: [4, 2]
 	},
 	{
 		id: 3,
-		suggestedBy: 'Max',
+		suggestedBy: 1,
 		title: 'Karten',
-		// claimed: false,
 		claimedBy: []
 	}
 ];

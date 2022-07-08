@@ -14,6 +14,10 @@ const users = [
 	{
 		id: 4,
 		name: 'Claudi'
+	},
+	{
+		id: 5,
+		name: 'Nadia'
 	}
 ];
 

@@ -3,10 +3,7 @@
 	const dispatch = createEventDispatcher();
 	import Item from './Item.svelte';
 	export let items;
-	export let userId
-	// const handleClaim = (event) => {
-	// 	console.log(`clicked id ${event.detail}`)
-	// }
+	export let userId;
 </script>
 
 <div class="list-container py-6 mb-6">
