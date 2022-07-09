@@ -4,9 +4,8 @@ import { supabase } from '$lib/db.js';
 export const guests = writable([]);
 
 async function getGuests() {
-	let { data, error } = await supabase.from('guests').select('name,id,age');
+	let { data, error } = await supabase.from('guests').select('name,id');
 	if (!error) {
-		// console.log('setting guests', data);
 		guests.set(data);
 		return true;
 	}

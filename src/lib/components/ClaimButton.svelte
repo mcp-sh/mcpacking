@@ -1,13 +1,16 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
+	export let claimedByMe;
 
 	const claimItem = () => {
 		dispatch('claim');
 	};
+
+	console.log(claimedByMe);
 </script>
 
-<button on:click={claimItem} class="btn btn-sm btn-primary">
+<button on:click={claimItem} class="btn btn-sm btn-primary" class:bg-base-300={!claimedByMe}>
 	<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 		<path
 			fill-rule="evenodd"

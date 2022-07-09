@@ -2,15 +2,13 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
-	export let itemId;
-
-	const deleteItem = (id) => {
-		// console.log(`Deleting item with id ${id}`);
-		dispatch('delete', id);
+	const deleteItem = () => {
+		console.log(`Deleting item`);
+		dispatch('delete');
 	};
 </script>
 
-<button on:click={deleteItem(itemId)} class="btn btn-sm btn-error">
+<button on:click={deleteItem} class="btn btn-sm btn-error">
 	<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 		<path
 			fill-rule="evenodd"

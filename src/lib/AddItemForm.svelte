@@ -3,17 +3,15 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 	let newItemTitle = '';
-	const addItem = () => {
-		const id = Math.floor(Math.random() * 10000);
+
+	function addItem() {
 		const newItem = {
-			id,
 			title: newItemTitle,
-			suggestedBy: $userId,
-			claimedBy: []
+			suggested_by: $userId
 		};
 		dispatch('addItem', newItem);
 		newItemTitle = '';
-	};
+	}
 </script>
 
 <h1 class="font-extralight text-3xl text-primary text-center">~</h1>
