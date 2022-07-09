@@ -8,6 +8,7 @@ async function getGuests() {
 	if (!error) {
 		// console.log('setting guests', data);
 		guests.set(data);
+		return true;
 	}
 }
 

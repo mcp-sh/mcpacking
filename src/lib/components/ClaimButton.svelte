@@ -2,15 +2,12 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
-	export let itemId;
-
-	const claimItem = (id) => {
-		// console.log(`Claiming item with id ${id}`);
-		dispatch('claim', id);
+	const claimItem = () => {
+		dispatch('claim');
 	};
 </script>
 
-<button on:click={claimItem(itemId)} class="btn btn-sm btn-primary">
+<button on:click={claimItem} class="btn btn-sm btn-primary">
 	<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 		<path
 			fill-rule="evenodd"
