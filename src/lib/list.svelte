@@ -12,19 +12,6 @@
 			return data;
 		}
 	}
-
-	const deleteItem = async (event) => {
-		const itemId = event.detail;
-		console.log(`Received delete Event for item  (${itemId}) from user ${$userId}`);
-		const { data, error } = await supabase.from('items').delete().eq('id', itemId);
-		if (error) {
-			console.log(error);
-		} else {
-			console.log('Deleted item', data);
-			const upd = await getItems();
-			items = [...upd];
-		}
-	};
 </script>
 
 <div class="list-container py-6 my-2">

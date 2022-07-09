@@ -3,7 +3,6 @@
 	const dispatch = createEventDispatcher();
 
 	const deleteItem = () => {
-		console.log(`Deleting item`);
 		dispatch('delete');
 	};
 </script>

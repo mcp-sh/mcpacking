@@ -14,11 +14,10 @@
 			.from('items')
 			.insert([{ title: newItem.title, suggested_by: $userId }]);
 		if (!error) {
-			console.log('succesfully added item', data);
 			const toAdd = data[0];
 			items = [...items, toAdd];
 		} else {
-			console.log(error);
+			console.error(error);
 		}
 	};
 

@@ -6,8 +6,6 @@
 	const claimItem = () => {
 		dispatch('claim');
 	};
-
-	console.log(claimedByMe);
 </script>
 
 <button on:click={claimItem} class="btn btn-sm btn-primary" class:bg-base-300={!claimedByMe}>
